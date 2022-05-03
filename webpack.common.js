@@ -14,13 +14,24 @@ module.exports = {
         collapseWhitespace: true,
         removeComments: true,
       },
-    })
+    }),
   ],
   module: {
     rules: [
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.(svg|png|jpg|jpeg|gif)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            esModule: false,
+            name: "[name].[hash].[ext]",
+            outputPath: "imgs",
+          },
+        },
       },
     ],
   },

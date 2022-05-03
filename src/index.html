@@ -1,12 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <div>Prova</div>
-</body>
+  </head>
+  <body>
+    <div class="content">
+      <main>
+        <aside class="location-container">
+          <h1>City</h1>
+          <h2>Date</h2>
+          <h3>time</h3>
+          <div class="info-item">
+            <img
+              src="https://img.icons8.com/color/48/000000/latitude.png"
+              alt=""
+            />
+            <div class="text">
+              <h3>Latitude</h3>
+              <div>
+                <span class="value">0.0</span>
+              </div>
+            </div>
+          </div>
+          <div class="info-item">
+            <img src="https://img.icons8.com/color/48/000000/longitude.png" />
+            <div class="text">
+              <h3>Longitude</h3>
+              <div>
+                <span class="value">0.0</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+        <div class="center-container">
+          <form action="#0">
+            <input type="text" placeholder="Search location..." required />
+            <button type="submit" class="search"></button>
+          </form>
+
+          <div class="weather-info">
+            <header>
+              <h1>Main</h1>
+              <h2>description</h2>
+            </header>
+            <main>
+              <div class="image-container">
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" class="icon" />
+              </div>
+
+              <div class="temp">
+                <div class="value">10°C</div>
+                <div class="info-item">
+                  <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" />
+                  <div class="text">
+                    <h3>Feels like</h3>
+                    <div>
+                      <span class="value">0</span>
+                      <span class="unit">°C</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+        <aside class="weather-detail-container">
+          <div class="info-item">
+            <img src="" alt="" />
+            <div class="text">
+              <h3>Humidity</h3>
+              <div>
+                <span class="value">0</span>
+                <span class="unit">%</span>
+              </div>
+            </div>
+          </div>
+          <div class="info-item">
+            <img src="" alt="" />
+            <div class="text">
+              <h3>Clouds</h3>
+              <div>
+                <span class="value">0</span>
+                <span class="unit">%</span>
+              </div>
+            </div>
+          </div>
+          <div class="info-item">
+            <img src="" alt="" />
+            <div class="text">
+              <h3>Chance of precipitation</h3>
+              <div>
+                <span class="value">0</span>
+                <span class="unit">%</span>
+              </div>
+            </div>
+          </div>
+          <div class="info-item">
+            <img src="" alt="" />
+            <div class="text">
+              <h3>Rain</h3>
+              <div>
+                <span class="value">0</span>
+                <span class="unit">mm</span>
+              </div>
+            </div>
+          </div>
+          <div class="info-item">
+            <img src="" alt="" />
+            <div class="text">
+              <h3>Snow</h3>
+              <div>
+                <span class="value">0</span>
+                <span class="unit">mm</span>
+              </div>
+            </div>
+          </div>
+          <div class="info-item">
+            <img src="" alt="" />
+            <div class="text">
+              <h3>Wind speed</h3>
+              <div>
+                <span class="value">0</span>
+                <span class="unit">mm</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </main>
+      <div class="forecast-container"></div>
+    </div>
+  </body>
 </html>
