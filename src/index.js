@@ -1,7 +1,8 @@
 import "./style.css";
 
 import * as Icon from './js/icon';
-import * as API from './js/weather';
+import * as API from './js/API/weather';
+import * as GEO from './js/API/geolocation';
 import * as DOM from './js/domUtilities';
 
 Icon.loadStaticIcon();
@@ -21,8 +22,13 @@ form.addEventListener("submit", async (e) => {
   input.value = "";
 
   try {
-    const data = await API.getWeather(city);
-    console.log(data);
+    const cityInfo = await GEO.getCityPosition(city);
+    delete cityInfo.local_names;
+    DOM.setCityInfo(cityInfo);
+
+    const { lat, lon } = cityInfo;
+    const weather = await API.getWeather(lat, lon);
+    DOM.setWeather(weather.current);
   } catch (error) {
     console.log("Error: ", error);
   }

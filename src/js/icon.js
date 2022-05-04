@@ -6,8 +6,36 @@ function loadStaticIcon() {
     qsImage(".search").src = Icons.searchIcon;
     qsImage("#probablyPrecipitation").src = Icons.probablyPrecipitation;
     qsImage("#rain").src = Icons.rain;
-    qsImage("#snow").src = Icons.snow;
+    qsImage("#snow").src = Icons.snowFlake;
     qsImage("#wind").src = Icons.wind;
+    qsImage("form").src = Icons.deleteIcon;
+}
+
+function getFeelsIcon(feelsLike) {
+    return feelsLike >= 20 ? Icons.hotTemp : Icons.coldTemp;
+}
+
+function getWeatherIcon(iconID) {
+    switch (iconID) {
+        case "01d": return Icons.sun;
+        case "01n": return Icons.moon;
+        case "02d": return Icons.cloudSun;
+        case "02n": return Icons.cloudMoon;
+        case "03d":
+        case "03n": return Icons.cloud;
+        case "04d":
+        case "04n": return Icons.twoClouds;
+        case "09d":
+        case "09n": return Icons.heavyRain;
+        case "10d": return Icons.rainSun;
+        case "10n": return Icons.rainMoon;
+        case "11d":
+        case "11n": return Icons.storm;
+        case "13d":
+        case "13n": return Icons.snow;
+        case "50d":
+        case "50n": return Icons.fog;
+    }
 }
 
 function qsImage(child, parent = document) {
@@ -16,4 +44,6 @@ function qsImage(child, parent = document) {
 
 export {
     loadStaticIcon,
+    getFeelsIcon,
+    getWeatherIcon
 }

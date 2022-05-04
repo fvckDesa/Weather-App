@@ -11,14 +11,14 @@
       <main>
         <aside class="location-container">
           <div class="location">
-            <h1>City</h1>
-            <h2>Country</h2>
+            <h1 id="city">City</h1>
+            <h2 id="country">Country</h2>
           </div>
           <div class="date-time">
-            <h2>Date</h2>
-            <h3>time</h3>
+            <h2 id="date">Date</h2>
+            <h3 id="time">time</h3>
           </div>
-          <div class="info-item">
+          <div class="info-item" id="latitude">
             <img
               src="https://img.icons8.com/color/48/000000/latitude.png"
               alt=""
@@ -30,7 +30,7 @@
               </div>
             </div>
           </div>
-          <div class="info-item">
+          <div class="info-item" id="longitude">
             <img src="https://img.icons8.com/color/48/000000/longitude.png" />
             <div class="text">
               <h3>Longitude</h3>
@@ -55,32 +55,33 @@
             </div>
 
             <form action="#0">
-              <input type="text" placeholder="Search location..." required />
               <button type="submit" class="search">
                 <img src="" alt="" />
               </button>
+              <input type="text" placeholder="Search location..." required />
+              <img src="" alt="" id="delete">
             </form>
           </div>
 
           <div class="weather-info">
             <header>
-              <h1>Main</h1>
-              <h2>description</h2>
+              <h1 id="weather-status">Main</h1>
+              <h2 id="description">description</h2>
             </header>
             <main>
               <div class="image-container">
                 <img
-                  src="http://openweathermap.org/img/wn/10d@2x.png"
+                  src=""
                   alt=""
-                  class="icon"
+                  class="weather-icon"
                 />
               </div>
 
               <div class="temp">
                 <div class="value">10°C</div>
-                <div class="info-item">
+                <div class="info-item" id="feels-like">
                   <img
-                    src="http://openweathermap.org/img/wn/10d@2x.png"
+                    src=""
                     alt=""
                   />
                   <div class="text">

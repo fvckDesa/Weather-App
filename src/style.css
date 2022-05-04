@@ -153,8 +153,12 @@ form > input {
   border: none;
 }
 
+form > input:not(:placeholder-shown) ~ #delete {
+  visibility: visible
+}
+
 form > .search,
-form > .search > img {
+form img {
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -163,6 +167,10 @@ form > .search {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+form > #delete {
+  visibility: hidden;
 }
 
 /* weather info */
@@ -246,9 +254,11 @@ form > .search {
   border-radius: var(--radius);
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
+  transition: transform 0.5s ease;
 }
 
 .forecast-item:hover {
+  transform: translateY(-1rem);
   cursor: pointer;
 }
 
@@ -256,3 +266,4 @@ form > .search {
   width: 48px;
   height: 48px;
 }
+
