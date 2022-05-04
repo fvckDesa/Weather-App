@@ -10,9 +10,14 @@
     <div class="content">
       <main>
         <aside class="location-container">
-          <h1>City</h1>
-          <h2>Date</h2>
-          <h3>time</h3>
+          <div class="location">
+            <h1>City</h1>
+            <h2>Country</h2>
+          </div>
+          <div class="date-time">
+            <h2>Date</h2>
+            <h3>time</h3>
+          </div>
           <div class="info-item">
             <img
               src="https://img.icons8.com/color/48/000000/latitude.png"
@@ -36,10 +41,26 @@
           </div>
         </aside>
         <div class="center-container">
-          <form action="#0">
-            <input type="text" placeholder="Search location..." required />
-            <button type="submit" class="search"></button>
-          </form>
+          <div class="search-items">
+            <div class="current-position">
+              <script src="https://cdn.lordicon.com/lusqsztk.js"></script>
+              <lord-icon
+                src="https://cdn.lordicon.com/oaflahpk.json"
+                trigger=""
+                colors="primary:#848484"
+                state="hover-jump"
+                style="width: 32px; height: 32px"
+              >
+              </lord-icon>
+            </div>
+
+            <form action="#0">
+              <input type="text" placeholder="Search location..." required />
+              <button type="submit" class="search">
+                <img src="" alt="" />
+              </button>
+            </form>
+          </div>
 
           <div class="weather-info">
             <header>
@@ -48,13 +69,20 @@
             </header>
             <main>
               <div class="image-container">
-                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" class="icon" />
+                <img
+                  src="http://openweathermap.org/img/wn/10d@2x.png"
+                  alt=""
+                  class="icon"
+                />
               </div>
 
               <div class="temp">
                 <div class="value">10°C</div>
                 <div class="info-item">
-                  <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" />
+                  <img
+                    src="http://openweathermap.org/img/wn/10d@2x.png"
+                    alt=""
+                  />
                   <div class="text">
                     <h3>Feels like</h3>
                     <div>
@@ -68,7 +96,7 @@
           </div>
         </div>
         <aside class="weather-detail-container">
-          <div class="info-item">
+          <div class="info-item" id="humidity">
             <img src="" alt="" />
             <div class="text">
               <h3>Humidity</h3>
@@ -78,7 +106,7 @@
               </div>
             </div>
           </div>
-          <div class="info-item">
+          <div class="info-item" id="clouds">
             <img src="" alt="" />
             <div class="text">
               <h3>Clouds</h3>
@@ -88,7 +116,7 @@
               </div>
             </div>
           </div>
-          <div class="info-item">
+          <div class="info-item" id="probablyPrecipitation">
             <img src="" alt="" />
             <div class="text">
               <h3>Chance of precipitation</h3>
@@ -98,7 +126,7 @@
               </div>
             </div>
           </div>
-          <div class="info-item">
+          <div class="info-item" id="rain">
             <img src="" alt="" />
             <div class="text">
               <h3>Rain</h3>
@@ -108,7 +136,7 @@
               </div>
             </div>
           </div>
-          <div class="info-item">
+          <div class="info-item" id="snow">
             <img src="" alt="" />
             <div class="text">
               <h3>Snow</h3>
@@ -118,7 +146,7 @@
               </div>
             </div>
           </div>
-          <div class="info-item">
+          <div class="info-item" id="wind">
             <img src="" alt="" />
             <div class="text">
               <h3>Wind speed</h3>
@@ -133,4 +161,12 @@
       <div class="forecast-container"></div>
     </div>
   </body>
+
+  <template forecast>
+    <div class="forecast-item">
+      <h2>Day</h2>
+      <img src="" alt="" />
+      <span class="value">10°C</span>
+    </div>
+  </template>
 </html>

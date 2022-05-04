@@ -1,4 +1,5 @@
 :root {
+  --radius: 1rem;
 }
 
 *,
@@ -79,7 +80,7 @@ h3 {
 
 .content > main > aside {
   width: 22.5%;
-  border-radius: 1rem;
+  border-radius: var(--radius);
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
 }
@@ -111,8 +112,30 @@ h3 {
   justify-content: space-between;
 }
 
+.search-items {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* current position */
+.current-position {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 8), 0 0 1px 0 rgb(0 0 0 / 20);
+}
+
+.current-position:hover {
+  background-color: rgb(226, 226, 226);
+  cursor: pointer;
+}
+
 /* search-bar */
 form {
+  justify-self: flex-end;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -139,6 +162,7 @@ form > .search > img {
 form > .search {
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 /* weather info */
@@ -153,7 +177,7 @@ form > .search {
   width: 100%;
   height: 100%;
   padding: 2rem;
-  border-radius: 1rem;
+  border-radius: var(--radius);
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
 }
@@ -195,4 +219,40 @@ form > .search {
 
 .temp > .value {
   font-size: 5rem;
+}
+
+/* forecast */
+.forecast-container,
+.forecast-item {
+  display: flex;
+  align-items: center;
+}
+
+.forecast-container {
+  gap: 1.5rem;
+  width: 100%;
+  height: 25%;
+  padding: 0 2rem;
+  overflow-x: auto;
+}
+
+.forecast-item {
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+  width: 7rem;
+  height: 7rem;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.forecast-item:hover {
+  cursor: pointer;
+}
+
+.forecast-item > img {
+  width: 48px;
+  height: 48px;
 }

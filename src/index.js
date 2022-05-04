@@ -1,20 +1,17 @@
 import "./style.css";
 
-import SearchIcon from './assets/SVG/search-icon.svg';
-import humidity from './assets/SVG/humidity.svg';
+import * as Icon from './js/icon';
+import * as API from './js/weather';
+import * as DOM from './js/domUtilities';
 
-document.querySelector(".weather-detail-container > .info-item > img").src = humidity;
-
-import * as API from './js';
+Icon.loadStaticIcon();
 
 const searchBtn = document.querySelector(".search");
-
-const searchIcon = new Image();
-searchIcon.src = SearchIcon;
-
-searchBtn.append(searchIcon);
-
 const form = document.querySelector("form");
+const forecastContainer = document.querySelector(".forecast-container");
+
+const forecast = DOM.createForecast();
+forecastContainer.append(...forecast);
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
