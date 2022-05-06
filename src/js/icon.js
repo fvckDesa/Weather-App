@@ -8,7 +8,7 @@ function loadStaticIcon() {
     qsImage("#rain").src = Icons.rain;
     qsImage("#snow").src = Icons.snowFlake;
     qsImage("#wind").src = Icons.wind;
-    qsImage("form").src = Icons.deleteIcon;
+    qsImage(".delete").src = Icons.deleteIcon;
 }
 
 function getFeelsIcon(feelsLike) {

@@ -153,24 +153,30 @@ form > input {
   border: none;
 }
 
-form > input:not(:placeholder-shown) ~ #delete {
+form > input:not(:placeholder-shown) ~ .delete {
   visibility: visible
 }
 
 form > .search,
+form > .delete,
 form img {
   width: 1.5rem;
   height: 1.5rem;
 }
 
-form > .search {
+form > .search,
+form > .delete {
   background-color: transparent;
   border: none;
   cursor: pointer;
 }
 
-form > #delete {
+form > .delete {
   visibility: hidden;
+}
+
+form > .delete:hover {
+  cursor: pointer;
 }
 
 /* weather info */
@@ -237,6 +243,7 @@ form > #delete {
 }
 
 .forecast-container {
+  justify-content: center;
   gap: 1.5rem;
   width: 100%;
   height: 25%;

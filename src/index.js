@@ -7,12 +7,7 @@ import * as DOM from './js/domUtilities';
 
 Icon.loadStaticIcon();
 
-const searchBtn = document.querySelector(".search");
 const form = document.querySelector("form");
-const forecastContainer = document.querySelector(".forecast-container");
-
-const forecast = DOM.createForecast();
-forecastContainer.append(...forecast);
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -22,13 +17,14 @@ form.addEventListener("submit", async (e) => {
   input.value = "";
 
   try {
-    const cityInfo = await GEO.getCityPosition(city);
-    delete cityInfo.local_names;
+    const cityInfo = await GEO.getCityInfo({ city });
     DOM.setCityInfo(cityInfo);
 
     const { lat, lon } = cityInfo;
     const weather = await API.getWeather(lat, lon);
-    DOM.setWeather(weather.current);
+    DOM.setWeather(weather.hourly[0]);
+
+    DOM.setForecast(weather.daily);
   } catch (error) {
     console.log("Error: ", error);
   }

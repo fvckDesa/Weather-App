@@ -59,7 +59,9 @@
                 <img src="" alt="" />
               </button>
               <input type="text" placeholder="Search location..." required />
-              <img src="" alt="" id="delete">
+              <button type="reset" class="delete">
+                <img src="" alt="" />
+              </button>
             </form>
           </div>
 
@@ -165,9 +167,9 @@
 
   <template forecast>
     <div class="forecast-item">
-      <h2>Day</h2>
-      <img src="" alt="" />
-      <span class="value">10°C</span>
+      <h2 id="title">Day</h2>
+      <img src="" alt="" id="icon"/>
+      <span class="value" id="temp">10°C</span>
     </div>
   </template>
 </html>

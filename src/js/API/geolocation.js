@@ -28,18 +28,30 @@ function getCurrentPosition() {
   });
 }
 
-async function getCityPosition(city) {
+async function getCityInfo({ city, lat, lon }) {
   const limit = 1;
-  const url = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${limit}&appid=${API_KEY}`;
-  const cities = await fetchData(url);
-  if(cities.length === 0) {
+  let url;
+  if(city){
+    url = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${limit}&appid=${API_KEY}`;
+  } else {
+    url = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=${limit}&appid=${API_KEY}`;
+  }
+
+  const cityInfo = (await fetchData(url))[0];
+  if(cityInfo.length === 0 && city == undefined) {
+    return { name: "Unknown city", lat, lon };
+  }
+  if(city && cityInfo.length === 0) {
     throw new Error("city not found");
   }
-  return cities[0];
+
+  delete cityInfo.local_names;
+
+  return cityInfo;
 }
 
 
 export {
   getCurrentPosition,
-  getCityPosition
+  getCityInfo
 }
