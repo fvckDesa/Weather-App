@@ -1,5 +1,5 @@
 import { API_KEY, fetchData } from "./index";
-import { fromUnixTime } from "date-fns";
+import { fromUnixTime, format } from "date-fns";
 
 async function getWeather(lat, lon) {
   const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,alerts&appid=${API_KEY}&units=metric`;
@@ -30,10 +30,15 @@ function extractData({
   feels_like = parseInt(feels_like.day ?? feels_like);
   rain = rain?.["1h"] ?? rain ?? 0;
   snow = snow?.["1h"] ?? snow ?? 0;
-  pop *= 100;
+  pop = parseInt(pop * 100);
 
   const { main: status, description, icon } = weather[0];
   const dateTime = fromUnixTime(dt);
+  const date = { 
+    cityInfo: format(dateTime, "eeee PP"),
+    forecast: format(dateTime, "eee")
+  };
+  const time = format(dateTime, "h aaa");
 
   return {
     temp,
@@ -44,7 +49,8 @@ function extractData({
     status,
     description,
     icon,
-    dateTime,
+    date,
+    time,
     humidity,
     clouds,
     wind_speed,

@@ -1,5 +1,7 @@
 import { getFeelsIcon, getWeatherIcon } from "./icon";
 
+const DAY_FROM_API = 8;
+
 function setForecast(forecastArr) {
   const forecastContainer = qs(".forecast-container");
   forecastContainer.replaceChildren([]);
@@ -9,9 +11,16 @@ function setForecast(forecastArr) {
       .content.cloneNode(true)
       .querySelector(".forecast-item");
 
-    const { dateTime, icon, temp } = forecast;
+    const { date, time, icon, temp } = forecast;
 
-    qs("#title", forecastEl).innerText = forecast === forecastArr[0] ? "Today" : getForecastDay(dateTime);
+    let textTitle;
+    if(forecastArr.length > DAY_FROM_API) {
+      textTitle = forecast === forecastArr[0] ? "Now" : time;
+    } else {
+      textTitle = forecast === forecastArr[0] ? "Today" : date.forecast;
+    }
+
+    qs("#title", forecastEl).innerText = textTitle;
     qs("#icon", forecastEl).src = getWeatherIcon(icon);
     qs("#temp", forecastEl).innerText = `${temp} °C`;
 
@@ -21,19 +30,6 @@ function setForecast(forecastArr) {
 
     forecastContainer.append(forecastEl);
   }
-}
-
-function getForecastDay(date) {
-    const numDay = date.getDay();
-    switch(numDay) {
-        case 0: return "Sun";
-        case 1: return "Mon";
-        case 2: return "Tue";
-        case 3: return "Wed";
-        case 4: return "Thu";
-        case 5: return "Fri";
-        case 6: return "Sat";
-    }
 }
 
 function setCityInfo({ name: city, lat, lon, country }) {
@@ -52,15 +48,16 @@ function setWeather({
   status,
   description,
   icon,
-  dateTime,
+  date,
+  time,
   humidity,
   clouds,
   wind_speed,
 }) {
   const feelsIcon = getFeelsIcon(feels_like);
 
-  qs("#date").innerText = dateTime.toDateString();
-  qs("#time").innerText = dateTime.toTimeString().slice(0, 8);
+  qs("#date").innerText = date.cityInfo;
+  qs("#time").innerText = time;
 
   qs("#weather-status").innerText = status;
   qs("#description").innerText = description;

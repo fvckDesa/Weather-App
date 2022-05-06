@@ -242,11 +242,17 @@ form > .delete:hover {
   align-items: center;
 }
 
-.forecast-container {
-  justify-content: center;
-  gap: 1.5rem;
+.forecast {
+  position: relative;
   width: 100%;
   height: 25%;
+  padding: 0 2rem;
+}
+
+.forecast-container {
+  gap: 1.5rem;
+  width: 100%;
+  height: 100%;
   padding: 0 2rem;
   overflow-x: auto;
 }
@@ -258,6 +264,7 @@ form > .delete:hover {
   width: 7rem;
   height: 7rem;
   padding: 0.5rem;
+  margin-inline: auto;
   border-radius: var(--radius);
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
@@ -274,3 +281,36 @@ form > .delete:hover {
   height: 48px;
 }
 
+.change-forecast,
+.change-forecast-btn {
+  display: flex;
+  align-items: center;
+}
+
+.change-forecast {
+  position: absolute;
+  top: -1.5rem;
+  left: 2rem;
+  justify-content: space-between;
+  width: 22%;
+  height: 2rem;
+  padding-inline: 3rem;
+}
+
+.change-forecast-btn {
+  justify-content: center;
+  width: 6rem;
+  height: 100%;
+  border-radius: var(--radius);
+  background-color: transparent;
+  transition: background-color 0.5s ease;
+}
+
+.change-forecast-btn:hover {
+  cursor: pointer;
+}
+
+.change-forecast-btn.active {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}

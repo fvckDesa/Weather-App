@@ -6,7 +6,7 @@ function getCurrentPosition() {
 
     function success(position) {
       const { latitude, longitude } = position.coords;
-      resolve({ latitude, longitude });
+      resolve({ lat: latitude, lon: longitude });
     }
 
     function error(err) {
