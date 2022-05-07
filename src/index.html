@@ -72,28 +72,21 @@
             </header>
             <main>
               <div class="image-container">
-                <img
-                  src=""
-                  alt=""
-                  class="weather-icon"
-                />
+                <img src="" alt="" class="weather-icon" />
               </div>
 
               <div class="temp">
                 <div class="change-temp-unit">
                   <div>°F</div>
                   <label class="switch">
-                    <input type="checkbox" id="toggle" checked>
+                    <input type="checkbox" id="toggle" checked />
                     <span class="slider round"></span>
                   </label>
                   <div>°C</div>
                 </div>
                 <div class="value" id="temp">10°C</div>
                 <div class="info-item" id="feels-like">
-                  <img
-                    src=""
-                    alt=""
-                  />
+                  <img src="" alt="" />
                   <div class="text">
                     <h3>Feels like</h3>
                     <div class="value" id="temp">0°C</div>
@@ -174,12 +167,26 @@
         <div class="forecast-container"></div>
       </div>
     </div>
+    <div class="start-load-page">
+      <div class="start-load-image">
+        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+        <lord-icon
+          src="https://cdn.lordicon.com/wcjauznf.json"
+          colors="primary:#ffffff"
+          trigger="loop"
+          delay="500"
+          stroke="100"
+          style="width: 300px; height: 300px"
+        >
+        </lord-icon>
+      </div>
+    </div>
   </body>
 
   <template forecast>
     <div class="forecast-item">
       <h2 id="title">Day</h2>
-      <img src="" alt="" id="icon"/>
+      <img src="" alt="" id="icon" />
       <span class="value" id="temp">10°C</span>
     </div>
   </template>

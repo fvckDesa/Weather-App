@@ -11,11 +11,6 @@
   outline: none;
 }
 
-/* *:not(head):not(html):not(.forecast-container):not(main):not(main > * *),
-.weather-info > * {
-  border: solid 1px #000;
-} */
-
 body {
   font-family: montserrat, sans-serif;
   width: 100vw;
@@ -389,4 +384,26 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+/* first-load */
+
+.start-load-page,
+.start-load-container {
+  display: flex;
+  align-items: center;
+}
+
+.start-load-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #36b3c7;
+}
+
+.hidden {
+  display: none !important;
 }

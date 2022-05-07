@@ -7,6 +7,8 @@ import * as DOM from './js/domUtilities';
 
 Icon.loadStaticIcon();
 
+weatherFromCurrentPosition();
+
 let weatherData;
 
 const form = document.querySelector("form");
@@ -25,14 +27,7 @@ form.addEventListener("submit", (e) => {
   weather({ city });
 });
 
-currentPositionBtn.addEventListener("click", async () => {
-  try {
-    const coord = await GEO.getCurrentPosition();
-    weather(coord);
-  } catch(error) {
-    console.log("Error: ", error);
-  }
-});
+currentPositionBtn.addEventListener("click", weatherFromCurrentPosition);
 
 [dailyBtn, hourlyBtn].forEach(btn => btn.addEventListener("click", changeForecast));
 
@@ -53,6 +48,18 @@ async function weather(geolocationInfo) {
   } catch (error) {
     console.log("Error: ", error);
   }
+}
+
+async function weatherFromCurrentPosition() {
+  try {
+    const coord = await GEO.getCurrentPosition();
+    await weather(coord);
+  } catch(error) {
+    console.log("Error: ", error);
+  }
+
+  const firstPage = document.querySelector(".start-load-page");
+  setTimeout(() => firstPage.classList.add("hidden"), 2000);
 }
 
 function changeForecast(e) {
