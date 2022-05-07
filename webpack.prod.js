@@ -6,6 +6,7 @@ const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = merge(common, {
+  entry: ["regenerator-runtime/runtime.js", "./src/index.js"],
   mode: "production",
   plugins: [
     new OptimizeCssAssetsPlugin(),
@@ -27,8 +28,7 @@ module.exports = merge(common, {
         use: {
           loader: "babel-loader",
           options: {
-            presets: [["@babel/preset-env", { targets: "defaults" }]],
-            plugins: ["@babel/plugin-proposal-class-properties"],
+            presets: [["@babel/preset-env", { targets: "defaults" }]]
           },
         },
       },

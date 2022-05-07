@@ -1,3 +1,5 @@
+import 'regenerator-runtime/runtime';
+
 const API_KEY = "9996ab11b1425495b723f81b2970a76f";
 
 async function fetchData(url) {

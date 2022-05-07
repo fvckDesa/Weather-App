@@ -1,3 +1,5 @@
+import 'regenerator-runtime/runtime';
+
 import { API_KEY, fetchData } from "./index";
 import { fromUnixTime, format } from "date-fns";
 

@@ -1,3 +1,5 @@
+import 'regenerator-runtime/runtime';
+
 import "./style.css";
 
 import * as Icon from './js/icon';
