@@ -16,6 +16,7 @@ const currentPositionBtn = document.querySelector(".current-position");
 const dailyBtn = document.querySelector("#daily");
 const hourlyBtn = document.querySelector("#hourly");
 const toggleTemp = document.querySelector("#toggle");
+const loaders = [...document.querySelectorAll(".loader-container")];
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -34,6 +35,13 @@ currentPositionBtn.addEventListener("click", weatherFromCurrentPosition);
 toggleTemp.addEventListener("input", DOM.changeUnits);
 
 async function weather(geolocationInfo) {
+  loaders.forEach(loader => loader.classList.remove("hidden"));
+  loaders.forEach(loader => loader.classList.add("charge"));
+
+  if(!hourlyBtn.classList.contains("active")) {
+    [dailyBtn, hourlyBtn].forEach(btn => btn.classList.toggle("active"));
+  }
+
   try {
     const cityInfo = await GEO.getCityInfo(geolocationInfo);
     DOM.setCityInfo(cityInfo);
@@ -48,6 +56,9 @@ async function weather(geolocationInfo) {
   } catch (error) {
     console.log("Error: ", error);
   }
+
+  loaders.forEach(loader => loader.classList.remove("charge"));
+  setTimeout(() => loaders.forEach(loader => loader.classList.add("hidden")), 1000);
 }
 
 async function weatherFromCurrentPosition() {
@@ -59,7 +70,7 @@ async function weatherFromCurrentPosition() {
   }
 
   const firstPage = document.querySelector(".start-load-page");
-  setTimeout(() => firstPage.classList.add("hidden"), 2000);
+  setTimeout(() => firstPage.classList.add("hidden"), 0);
 }
 
 function changeForecast(e) {
