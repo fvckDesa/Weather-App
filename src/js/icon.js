@@ -12,7 +12,8 @@ function loadStaticIcon() {
 }
 
 function getFeelsIcon(feelsLike) {
-    return feelsLike >= 20 ? Icons.hotTemp : Icons.coldTemp;
+    const AMBIENT_TEMP_IN_K = 293.15;
+    return feelsLike >= AMBIENT_TEMP_IN_K ? Icons.hotTemp : Icons.coldTemp;
 }
 
 function getWeatherIcon(iconID) {

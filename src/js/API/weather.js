@@ -2,7 +2,7 @@ import { API_KEY, fetchData } from "./index";
 import { fromUnixTime, format } from "date-fns";
 
 async function getWeather(lat, lon) {
-  const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,alerts&appid=${API_KEY}&units=metric`;
+  const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,alerts&appid=${API_KEY}`;
   const weatherData = await fetchData(weatherURL);
   return formatWeatherData(weatherData);
 }

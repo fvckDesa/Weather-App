@@ -80,7 +80,15 @@
               </div>
 
               <div class="temp">
-                <div class="value">10°C</div>
+                <div class="change-temp-unit">
+                  <div>°F</div>
+                  <label class="switch">
+                    <input type="checkbox" id="toggle" checked>
+                    <span class="slider round"></span>
+                  </label>
+                  <div>°C</div>
+                </div>
+                <div class="value" id="temp">10°C</div>
                 <div class="info-item" id="feels-like">
                   <img
                     src=""
@@ -88,10 +96,7 @@
                   />
                   <div class="text">
                     <h3>Feels like</h3>
-                    <div>
-                      <span class="value">0</span>
-                      <span class="unit">°C</span>
-                    </div>
+                    <div class="value" id="temp">0°C</div>
                   </div>
                 </div>
               </div>

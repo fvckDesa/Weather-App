@@ -13,6 +13,7 @@ const form = document.querySelector("form");
 const currentPositionBtn = document.querySelector(".current-position");
 const dailyBtn = document.querySelector("#daily");
 const hourlyBtn = document.querySelector("#hourly");
+const toggleTemp = document.querySelector("#toggle");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -34,6 +35,8 @@ currentPositionBtn.addEventListener("click", async () => {
 });
 
 [dailyBtn, hourlyBtn].forEach(btn => btn.addEventListener("click", changeForecast));
+
+toggleTemp.addEventListener("input", DOM.changeUnits);
 
 async function weather(geolocationInfo) {
   try {
