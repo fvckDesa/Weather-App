@@ -68,7 +68,9 @@ async function weatherFromCurrentPosition() {
     const coord = await GEO.getCurrentPosition();
     await weather(coord);
   } catch(error) {
-    console.log("Error: ", error);
+    const defaultCoord = { lat: 41.8943818, lon: 12.5005232};
+    await weather(defaultCoord);
+    console.log(error);
   }
 
   const firstPage = document.querySelector(".start-load-page");
@@ -80,6 +82,5 @@ function changeForecast(e) {
   if(!forecastContainer.hasChildNodes()) return;
 
   [dailyBtn, hourlyBtn].forEach(btn => btn.classList.toggle("active"));
-
   DOM.setForecast(weatherData[e.target.id]);
 }

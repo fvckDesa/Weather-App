@@ -179,11 +179,6 @@
           <div class="change-forecast-btn" id="daily">daily</div>
           <div class="change-forecast-btn active" id="hourly">hourly</div>
         </div>
-        <div class="loader-container">
-          <svg class="ring" viewBox="25 25 50 50" stroke-width="5">
-            <circle cx="50" cy="50" r="20" />
-          </svg>
-        </div>
         <div class="forecast-container"></div>
       </div>
     </div>
@@ -205,6 +200,11 @@
 
   <template forecast>
     <div class="forecast-item">
+      <div class="loader-container">
+        <svg class="ring" viewBox="25 25 50 50" stroke-width="5">
+          <circle cx="50" cy="50" r="20" />
+        </svg>
+      </div>
       <h2 id="title">Day</h2>
       <img src="" alt="" id="icon" />
       <span class="value" id="temp">10°C</span>

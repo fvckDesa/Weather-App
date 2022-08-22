@@ -4,7 +4,8 @@ import { API_KEY, fetchData } from './index';
 
 function getCurrentPosition() {
   return new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(success, error);
+    const locationOption = { maximumAge:60000, timeout:5000, enableHighAccuracy:true };
+    navigator.geolocation.getCurrentPosition(success, error, locationOption);
 
     function success(position) {
       const { latitude, longitude } = position.coords;
@@ -16,7 +17,7 @@ function getCurrentPosition() {
       switch (err.code) {
         case 1:
           message =
-            "To use this feature, the site must be authorized to access the location";
+            "The site must be authorized to access the location for search weather in your current position";
           break;
         case 2:
         case 3:
