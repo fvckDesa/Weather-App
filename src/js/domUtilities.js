@@ -1,3 +1,4 @@
+import { isToday, isSameHour, parse } from "date-fns"; 
 import { getFeelsIcon, getWeatherIcon } from "./icon";
 import { formatSpeedValue, metersSecondToMillesHour, millesHourToMetersSecond } from "./units/speed";
 import {
@@ -7,24 +8,48 @@ import {
   isCelsius,
 } from "./units/temperature";
 
-const DAY_FROM_API = 8;
+let pageCount = 0;
+let pages = [];
+
+const forecasts = [...document.querySelectorAll(".forecast-item")];
+const dotContainer = qs(".dots");
+const arrowLeft = qs("#arrow-left");
+const arrowRight = qs("#arrow-right");
+
+arrowLeft.addEventListener("click", () => setForecastPage(pages[pageCount - 1]));
+arrowRight.addEventListener("click", () => setForecastPage(pages[pageCount + 1]));
 
 function setForecast(forecastArr) {
-  const forecastContainer = qs(".forecast-container");
-  forecastContainer.replaceChildren([]);
+  pageCount = 0;
+  pages = forecastArr.reduce((pages, forecast, i) => {
+    if(i % 8 === 0) pages.push([]);
+    pages[pages.length - 1].push(forecast);
+    return pages;
+  }, []);
+  // eslint-disable-next-line no-unused-vars
+  dotContainer.replaceChildren(...pages.map((_, i) => {
+    const dot = document.createElement("div");
+    dot.classList.add("dot");
+    
+    dot.addEventListener("click", () => setForecastPage(pages[i]));
+    return dot;
+  }));
 
-  for (const forecast of forecastArr) {
-    const forecastEl = qs("[forecast]")
-      .content.cloneNode(true)
-      .querySelector(".forecast-item");
+  setForecastPage(pages[pageCount]);
+}
 
+function setForecastPage(forecastArr) {
+  const isDaily = forecastArr.every(forecast => forecast.time === forecastArr[0].time);
+  forecastArr.forEach((forecast, i) => {
+    const forecastEl = forecasts[i];
     const { date, time, icon, temp } = forecast;
-
+    const dateObj = parse(`${date.cityInfo} ${time}`, "EEEE MMM d, yyyy h a", new Date());
     let textTitle;
-    if (forecastArr.length > DAY_FROM_API) {
-      textTitle = forecast === forecastArr[0] ? "Now" : time;
+
+    if (isDaily) {
+      textTitle = isToday(dateObj) ? "Today" : date.forecast;
     } else {
-      textTitle = forecast === forecastArr[0] ? "Today" : date.forecast;
+      textTitle = isSameHour(dateObj, new Date()) ? "Now" : time;
     }
 
     qs("#title", forecastEl).innerText = textTitle;
@@ -35,8 +60,14 @@ function setForecast(forecastArr) {
       setWeather(forecast);
     });
 
-    forecastContainer.append(forecastEl);
-  }
+    pageCount = pages.indexOf(forecastArr);
+
+    arrowLeft.disabled = pageCount === 0;
+    arrowRight.disabled = pageCount === pages.length - 1;
+
+    qs(".active", dotContainer)?.classList.remove("active");
+    dotContainer.children[pageCount].classList.add("active");
+  });
 }
 
 function setCityInfo({ name: city, lat, lon, country }) {

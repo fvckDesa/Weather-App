@@ -82,5 +82,6 @@ function changeForecast(e) {
   if(!forecastContainer.hasChildNodes()) return;
 
   [dailyBtn, hourlyBtn].forEach(btn => btn.classList.toggle("active"));
+
   DOM.setForecast(weatherData[e.target.id]);
 }
