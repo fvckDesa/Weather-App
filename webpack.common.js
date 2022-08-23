@@ -7,6 +7,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Weather App",
       template: "./src/index.html",
+      favicon: "./src/assets/favicon/favicon.ico",
       minify: {
         removeAttributeQuotes: true,
         collapseWhitespace: true,
@@ -28,6 +29,15 @@ module.exports = {
             esModule: false,
             name: "[name].[hash].[ext]",
             outputPath: "imgs",
+          },
+        },
+      },
+      {
+        test: /\.ico$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "[name].[hash].[ext]",
           },
         },
       },
