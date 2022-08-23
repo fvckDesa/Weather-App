@@ -1,4 +1,4 @@
-import { isToday, isSameHour, parse } from "date-fns"; 
+import { isToday, isSameHour, format } from "date-fns"; 
 import { getFeelsIcon, getWeatherIcon } from "./icon";
 import { formatSpeedValue, metersSecondToMillesHour, millesHourToMetersSecond } from "./units/speed";
 import {
@@ -39,17 +39,16 @@ function setForecast(forecastArr) {
 }
 
 function setForecastPage(forecastArr) {
-  const isDaily = forecastArr.every(forecast => forecast.time === forecastArr[0].time);
+  const isDaily = forecastArr.every(forecast => format(forecast.dateTime, "h aaa") === format(forecastArr[0].dateTime, "h aaa"));
   forecastArr.forEach((forecast, i) => {
     const forecastEl = forecasts[i];
-    const { date, time, icon, temp } = forecast;
-    const dateObj = parse(`${date.cityInfo} ${time}`, "EEEE MMM d, yyyy h a", new Date());
+    const { dateTime, icon, temp } = forecast;
     let textTitle;
 
     if (isDaily) {
-      textTitle = isToday(dateObj) ? "Today" : date.forecast;
+      textTitle = isToday(dateTime) ? "Today" : format(dateTime, "eee");
     } else {
-      textTitle = isSameHour(dateObj, new Date()) ? "Now" : time;
+      textTitle = isSameHour(dateTime, new Date()) ? "Now" : format(dateTime, "h aaa");
     }
 
     qs("#title", forecastEl).innerText = textTitle;
@@ -86,16 +85,16 @@ function setWeather({
   status,
   description,
   icon,
-  date,
-  time,
+  dateTime,
   humidity,
   clouds,
   wind_speed,
 }) {
   const feelsIcon = getFeelsIcon(feels_like);
 
-  qs("#date").innerText = date.cityInfo;
-  qs("#time").innerText = time;
+  qs("#week-day").innerText = format(dateTime, "eeee");
+  qs("#date").innerText = format(dateTime, "PPP");
+  qs("#time").innerText = format(dateTime, "h aaa");
 
   qs("#weather-status").innerText = status;
   qs("#description").innerText = description;

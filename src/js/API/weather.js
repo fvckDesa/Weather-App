@@ -1,7 +1,7 @@
 import 'regenerator-runtime/runtime';
 
 import { API_KEY, fetchData } from "./index";
-import { fromUnixTime, format } from "date-fns";
+import { fromUnixTime } from "date-fns";
 
 async function getWeather(lat, lon) {
   const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,alerts&appid=${API_KEY}`;
@@ -36,11 +36,6 @@ function extractData({
 
   const { main: status, description, icon } = weather[0];
   const dateTime = fromUnixTime(dt);
-  const date = { 
-    cityInfo: format(dateTime, "eeee PP"),
-    forecast: format(dateTime, "eee")
-  };
-  const time = format(dateTime, "h aaa");
 
   return {
     temp,
@@ -51,8 +46,7 @@ function extractData({
     status,
     description,
     icon,
-    date,
-    time,
+    dateTime,
     humidity,
     clouds,
     wind_speed,

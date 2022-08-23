@@ -102,10 +102,15 @@ h3 {
 
 .location-container {
   height: 80% !important;
+  padding-bottom: 3rem !important;
 }
 
 .location-container #latitude {
-  margin-top: 20%;
+  margin-top: auto;
+}
+
+.date-time > h2:not(:last-child) {
+  margin-bottom: 0.3rem;
 }
 
 .center-container {
