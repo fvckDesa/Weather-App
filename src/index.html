@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/e9112b0317.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/e9112b0317.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Weather App</title>
   </head>
-  <body>
+  <body class="light-theme">
     <div class="content">
       <main>
         <aside class="location-container">
@@ -69,6 +72,25 @@
                 <img src="" alt="" />
               </button>
             </form>
+
+            <div class="change-theme">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#2e3a59"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="moon"
+              >
+                <path
+                  d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                ></path>
+              </svg>
+            </div>
           </div>
 
           <div class="weather-info">
@@ -177,7 +199,7 @@
       </main>
       <div class="forecast">
         <div class="change-forecast">
-          <div class="change-forecast-type">
+          <div class="change-forecast-type right">
             <div class="change-forecast-btn" id="daily">daily</div>
             <div class="change-forecast-btn active" id="hourly">hourly</div>
           </div>

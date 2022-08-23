@@ -1,7 +1,11 @@
 :root {
   --radius: 1rem;
-  --primary-blue: #36b3c7;
-  --secondary-blue: #73CAD8;
+  --light: rgba(255, 255, 255, 0.75);
+  --dark: rgba(17, 25, 40, 0.75);
+  --text-light: #fff;
+  --text-dark: #000;
+
+  --bg-transition: background 0.3s ease;
 }
 
 *,
@@ -20,7 +24,17 @@ body {
   background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100');
   background-position: center;
   background-size: 100%;
-  color: rgb(255, 255, 255);
+  color: var(--text);
+}
+
+body.light-theme {
+  --bg: var(--light);
+  --text: var(--text-dark);
+}
+
+body.dark-theme {
+  --bg: var(--dark);
+  --text: var(--text-light);
 }
 
 /* set-font-dimension */
@@ -80,9 +94,10 @@ h3 {
   border-radius: var(--radius);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(17, 25, 40, 0.75);
+  background-color: var(--bg);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
+  transition: var(--bg-transition);
 }
 
 .location-container {
@@ -187,6 +202,27 @@ form > .delete:hover {
   cursor: pointer;
 }
 
+/* change theme btn */
+.change-theme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 8), 0 0 1px 0 rgb(0 0 0 / 20);
+  cursor: pointer;
+}
+
+.change-theme:hover {
+  background-color: rgb(226, 226, 226);
+}
+
+.change-theme.active .moon {
+  fill: #2e3a59;
+}
+
 /* weather info */
 
 .weather-info,
@@ -203,9 +239,10 @@ form > .delete:hover {
   border-radius: var(--radius);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(17, 25, 40, 0.75);
+  background-color: var(--bg);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
+  transition: var(--bg-transition);
 }
 
 .weather-info > header {
@@ -279,10 +316,11 @@ form > .delete:hover {
   border-radius: var(--radius);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(17, 25, 40, 0.75);
+  background-color: var(--bg);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease,
+              var(--bg-transition);
 }
 
 .forecast-item:hover {
@@ -310,6 +348,32 @@ form > .delete:hover {
   align-items: center;
   width: 100%;
   height: 2rem;
+}
+
+.change-forecast-type {
+  position: relative;
+  justify-content: space-between;
+  border-radius: 5rem;
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: var(--bg);
+}
+
+.change-forecast-type::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+  border-radius: 5rem;
+  background-color: #2196F3;
+  transition: left 0.3s ease;
+  z-index: 0;
+}
+
+.change-forecast-type.right::before {
+  left: 55%;
 }
 
 .change-forecast-page {
@@ -367,23 +431,16 @@ form > .delete:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 6rem;
+  width: 45%;
   height: 100%;
-  border-radius: var(--radius);
-  background-color: transparent;
-  transition: background-color 0.5s ease;
-}
-
-.change-forecast-btn:hover {
+  border-radius: 12px;
   cursor: pointer;
+  z-index: 1;
 }
 
 .change-forecast-btn.active {
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(17, 25, 40, 0.75);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  color: var(--text-light);
+  transition: color 0.3s ease 0.2s;
 }
 
 .change-temp-unit {
@@ -481,7 +538,7 @@ input:checked + .slider:before {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-color: #36b3c7;
+  background-color: #2196F3;
   z-index: 2;
 }
 

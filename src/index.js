@@ -15,10 +15,24 @@ let weatherData;
 
 const form = document.querySelector("form");
 const currentPositionBtn = document.querySelector(".current-position");
+const changeTheme = document.querySelector(".change-theme");
 const dailyBtn = document.querySelector("#daily");
 const hourlyBtn = document.querySelector("#hourly");
 const toggleTemp = document.querySelector("#toggle");
 const loaders = [...document.querySelectorAll(".loader-container")];
+
+// color scheme
+if(window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  changeColorScheme(true);
+}
+
+window.matchMedia('(prefers-color-scheme: light)').addEventListener("change", (e) => {
+  changeColorScheme(e.matches === "dark");
+});
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change", (e) => {
+  changeColorScheme(e.matches === "dark");
+});
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -32,17 +46,15 @@ form.addEventListener("submit", (e) => {
 
 currentPositionBtn.addEventListener("click", weatherFromCurrentPosition);
 
-[dailyBtn, hourlyBtn].forEach(btn => btn.addEventListener("click", changeForecast));
+changeTheme.addEventListener("click", () => changeColorScheme());
+
+[dailyBtn, hourlyBtn].forEach(btn => btn.addEventListener("click", (e) => changeForecast(e.target.id)));
 
 toggleTemp.addEventListener("input", DOM.changeUnits);
 
 async function weather(geolocationInfo) {
   loaders.forEach(loader => loader.classList.remove("hidden"));
   loaders.forEach(loader => loader.classList.add("charge"));
-
-  if(!hourlyBtn.classList.contains("active")) {
-    [dailyBtn, hourlyBtn].forEach(btn => btn.classList.toggle("active"));
-  }
 
   try {
     const cityInfo = await GEO.getCityInfo(geolocationInfo);
@@ -52,9 +64,9 @@ async function weather(geolocationInfo) {
     const weatherInfo = await API.getWeather(lat, lon);
     DOM.setWeather(weatherInfo.hourly[0]);
 
-    DOM.setForecast(weatherInfo.hourly);
-
     weatherData = weatherInfo;
+
+    changeForecast("hourly");
   } catch (error) {
     console.log("Error: ", error);
   }
@@ -77,11 +89,20 @@ async function weatherFromCurrentPosition() {
   setTimeout(() => firstPage.classList.add("hidden"), 0);
 }
 
-function changeForecast(e) {
-  const forecastContainer = document.querySelector(".forecast-container");
-  if(!forecastContainer.hasChildNodes()) return;
+function changeForecast(id) {
+  dailyBtn.classList.toggle("active", !(id === "hourly"));
+  hourlyBtn.classList.toggle("active", id === "hourly");
 
-  [dailyBtn, hourlyBtn].forEach(btn => btn.classList.toggle("active"));
+  dailyBtn.parentElement.classList.toggle("right", hourlyBtn.classList.contains("active"));
 
-  DOM.setForecast(weatherData[e.target.id]);
+  DOM.setForecast(weatherData[id]);
+}
+
+function changeColorScheme(forceDarkTheme) {
+  const isLightTheme = forceDarkTheme ?? document.body.classList.contains("light-theme");
+
+  document.body.classList.toggle("light-theme", !isLightTheme);
+  document.body.classList.toggle("dark-theme", isLightTheme);
+
+  changeTheme.classList.toggle("active", isLightTheme);
 }
