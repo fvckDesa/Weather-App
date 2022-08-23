@@ -14,7 +14,7 @@
     <div class="content">
       <main>
         <aside class="location-container">
-          <div class="loader-container">
+          <div class="loader-container charge">
             <svg class="ring" viewBox="25 25 50 50" stroke-width="5">
               <circle cx="50" cy="50" r="20" />
             </svg>
@@ -95,10 +95,18 @@
           </div>
 
           <div class="weather-info">
-            <div class="loader-container">
-              <svg class="ring" viewBox="25 25 50 50" stroke-width="5">
-                <circle cx="50" cy="50" r="20" />
-              </svg>
+            <div class="loader-container charge">
+              <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+              <lord-icon
+                src="https://cdn.lordicon.com/wcjauznf.json"
+                colors="primary:#ffffff"
+                trigger="loop"
+                delay="500"
+                stroke="100"
+                style="width: 200px; height: 200px"
+                id="cloud-loader"
+              >
+              </lord-icon>
             </div>
             <header>
               <h1 id="weather-status">Main</h1>
@@ -131,7 +139,7 @@
           </div>
         </div>
         <aside class="weather-detail-container">
-          <div class="loader-container">
+          <div class="loader-container charge">
             <svg class="ring" viewBox="25 25 50 50" stroke-width="5">
               <circle cx="50" cy="50" r="20" />
             </svg>
@@ -216,7 +224,7 @@
         </div>
         <div class="forecast-container">
           <div class="forecast-item">
-            <div class="loader-container">
+            <div class="loader-container charge">
               <svg class="ring" viewBox="25 25 50 50" stroke-width="5">
                 <circle cx="50" cy="50" r="20" />
               </svg>
@@ -226,7 +234,7 @@
             <span class="value" id="temp">10°C</span>
           </div>
           <div class="forecast-item">
-            <div class="loader-container">
+            <div class="loader-container charge">
               <svg class="ring" viewBox="25 25 50 50" stroke-width="5">
                 <circle cx="50" cy="50" r="20" />
               </svg>
@@ -236,7 +244,7 @@
             <span class="value" id="temp">10°C</span>
           </div>
           <div class="forecast-item">
-            <div class="loader-container">
+            <div class="loader-container charge">
               <svg class="ring" viewBox="25 25 50 50" stroke-width="5">
                 <circle cx="50" cy="50" r="20" />
               </svg>
@@ -246,7 +254,7 @@
             <span class="value" id="temp">10°C</span>
           </div>
           <div class="forecast-item">
-            <div class="loader-container">
+            <div class="loader-container charge">
               <svg class="ring" viewBox="25 25 50 50" stroke-width="5">
                 <circle cx="50" cy="50" r="20" />
               </svg>
@@ -256,7 +264,7 @@
             <span class="value" id="temp">10°C</span>
           </div>
           <div class="forecast-item">
-            <div class="loader-container">
+            <div class="loader-container charge">
               <svg class="ring" viewBox="25 25 50 50" stroke-width="5">
                 <circle cx="50" cy="50" r="20" />
               </svg>
@@ -266,7 +274,7 @@
             <span class="value" id="temp">10°C</span>
           </div>
           <div class="forecast-item">
-            <div class="loader-container">
+            <div class="loader-container charge">
               <svg class="ring" viewBox="25 25 50 50" stroke-width="5">
                 <circle cx="50" cy="50" r="20" />
               </svg>
@@ -276,7 +284,7 @@
             <span class="value" id="temp">10°C</span>
           </div>
           <div class="forecast-item">
-            <div class="loader-container">
+            <div class="loader-container charge">
               <svg class="ring" viewBox="25 25 50 50" stroke-width="5">
                 <circle cx="50" cy="50" r="20" />
               </svg>
@@ -286,7 +294,7 @@
             <span class="value" id="temp">10°C</span>
           </div>
           <div class="forecast-item">
-            <div class="loader-container">
+            <div class="loader-container charge">
               <svg class="ring" viewBox="25 25 50 50" stroke-width="5">
                 <circle cx="50" cy="50" r="20" />
               </svg>
@@ -296,20 +304,6 @@
             <span class="value" id="temp">10°C</span>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="start-load-page">
-      <div class="start-load-image">
-        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-        <lord-icon
-          src="https://cdn.lordicon.com/wcjauznf.json"
-          colors="primary:#ffffff"
-          trigger="loop"
-          delay="500"
-          stroke="100"
-          style="width: 300px; height: 300px"
-        >
-        </lord-icon>
       </div>
     </div>
   </body>

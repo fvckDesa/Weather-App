@@ -7,10 +7,6 @@ import * as API from './js/API/weather';
 import * as GEO from './js/API/geolocation';
 import * as DOM from './js/domUtilities';
 
-Icon.loadStaticIcon();
-
-weatherFromCurrentPosition();
-
 let weatherData;
 
 const form = document.querySelector("form");
@@ -20,6 +16,10 @@ const dailyBtn = document.querySelector("#daily");
 const hourlyBtn = document.querySelector("#hourly");
 const toggleTemp = document.querySelector("#toggle");
 const loaders = [...document.querySelectorAll(".loader-container")];
+
+Icon.loadStaticIcon();
+
+weatherFromCurrentPosition();
 
 // color scheme
 if(window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -84,9 +84,6 @@ async function weatherFromCurrentPosition() {
     await weather(defaultCoord);
     console.log(error);
   }
-
-  const firstPage = document.querySelector(".start-load-page");
-  setTimeout(() => firstPage.classList.add("hidden"), 0);
 }
 
 function changeForecast(id) {
