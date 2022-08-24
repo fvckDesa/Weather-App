@@ -7,7 +7,7 @@ import * as API from './js/API/weather';
 import * as GEO from './js/API/geolocation';
 import * as DOM from './js/domUtilities';
 
-let weatherData;
+let weatherData, isLoading = false;
 
 const form = document.querySelector("form");
 const currentPositionBtn = document.querySelector(".current-position");
@@ -16,6 +16,7 @@ const dailyBtn = document.querySelector("#daily");
 const hourlyBtn = document.querySelector("#hourly");
 const toggleTemp = document.querySelector("#toggle");
 const loaders = [...document.querySelectorAll(".loader-container")];
+const cloudLoader = document.querySelector("#cloud-loader");
 
 Icon.loadStaticIcon();
 
@@ -53,6 +54,10 @@ changeTheme.addEventListener("click", () => changeColorScheme());
 toggleTemp.addEventListener("input", DOM.changeUnits);
 
 async function weather(geolocationInfo) {
+  if(isLoading) return;
+
+  isLoading = true;
+
   loaders.forEach(loader => loader.classList.remove("hidden"));
   loaders.forEach(loader => loader.classList.add("charge"));
 
@@ -73,9 +78,13 @@ async function weather(geolocationInfo) {
 
   loaders.forEach(loader => loader.classList.remove("charge"));
   setTimeout(() => loaders.forEach(loader => loader.classList.add("hidden")), 1000);
+
+  isLoading = false;
 }
 
 async function weatherFromCurrentPosition() {
+  if(isLoading) return;
+
   try {
     const coord = await GEO.getCurrentPosition();
     await weather(coord);
@@ -96,10 +105,12 @@ function changeForecast(id) {
 }
 
 function changeColorScheme(forceDarkTheme) {
-  const isLightTheme = forceDarkTheme ?? document.body.classList.contains("light-theme");
+  const isDarkTheme = forceDarkTheme ?? document.body.classList.contains("light-theme");
 
-  document.body.classList.toggle("light-theme", !isLightTheme);
-  document.body.classList.toggle("dark-theme", isLightTheme);
+  document.body.classList.toggle("light-theme", !isDarkTheme);
+  document.body.classList.toggle("dark-theme", isDarkTheme);
 
-  changeTheme.classList.toggle("active", isLightTheme);
+  changeTheme.classList.toggle("active", isDarkTheme);
+
+  cloudLoader.setAttribute("colors", `primary:${isDarkTheme ? "#fff" : "#000"}`);
 }

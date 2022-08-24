@@ -30,11 +30,13 @@ body {
 body.light-theme {
   --bg: var(--light);
   --text: var(--text-dark);
+  --loader-bg: rgb(255, 255, 255);
 }
 
 body.dark-theme {
   --bg: var(--dark);
   --text: var(--text-light);
+  --loader-bg: rgb(17, 25, 40);
 }
 
 /* set-font-dimension */
@@ -92,8 +94,8 @@ h3 {
   position: relative;
   width: 22.5%;
   border-radius: var(--radius);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(5px) saturate(180%);
+  -webkit-backdrop-filter: blur(5px) saturate(180%);
   background-color: var(--bg);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
@@ -242,8 +244,8 @@ form > .delete:hover {
   height: 100%;
   padding: 2rem;
   border-radius: var(--radius);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(5px) saturate(180%);
+  -webkit-backdrop-filter: blur(5px) saturate(180%);
   background-color: var(--bg);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
@@ -319,8 +321,8 @@ form > .delete:hover {
   padding: 0.5rem;
   margin-inline: auto;
   border-radius: var(--radius);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(5px) saturate(180%);
+  -webkit-backdrop-filter: blur(5px) saturate(180%);
   background-color: var(--bg);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
@@ -360,7 +362,7 @@ form > .delete:hover {
   justify-content: space-between;
   border-radius: 5rem;
   backdrop-filter: blur(25px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(5px) saturate(180%);
   background-color: var(--bg);
 }
 
@@ -523,58 +525,47 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-/* first-load */
-
-.start-load-page,
-.start-load-container,
+/* loader */
 .loader-container {
-  display: flex;
-  align-items: center;
-}
-
-.start-load-page,
-.loader-container {
+  position: absolute;
   top: 0;
   left: 0;
+  display: flex;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+  backdrop-filter: blur(5px) saturate(180%);
+  -webkit-backdrop-filter: blur(5px) saturate(180%);
+  background-color: var(--loader-bg);
+  opacity: 0;
+  transition: opacity 0.9s ease-in-out;
+  z-index: 1;
 }
 
-.start-load-page {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  background-color: #2196F3;
-  z-index: 2;
+.loader-container.charge {
+  animation: appear 1s ease-in-out;
+  opacity: 1;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .hidden {
   display: none !important;
 }
 
-/* loader */
-.loader-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: var(--radius);
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.loader-container.charge {
-  opacity: 1;
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(17, 25, 40, 1);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.125);
-}
-
 .ring {
   --uib-size: 40px;
-  --uib-speed: 2s;
-  --uib-color: white;
+  --uib-speed: 3s;
+  --uib-color: var(--text);
   
   height: var(--uib-size);
   width: var(--uib-size);
