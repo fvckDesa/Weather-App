@@ -67,6 +67,9 @@ function setForecastPage(forecastArr) {
     qs(".active", dotContainer)?.classList.remove("active");
     dotContainer.children[pageCount].classList.add("active");
   });
+  
+  qs(".forecast-day").hidden = isDaily;
+  qs(".forecast-day > h2").innerText = format(forecastArr[0].dateTime, "eeee");
 }
 
 function setCityInfo({ name: city, lat, lon, country }) {

@@ -64,6 +64,10 @@ h3 {
   height: 100%;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 /* main */
 
 .content > main,
@@ -145,6 +149,7 @@ h3 {
 .search-items {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
   width: 100%;
 }
@@ -169,7 +174,7 @@ form {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 20rem;
+  flex: 0.8;
   height: 2rem;
   padding: 0.25rem;
   border-radius: 5rem;
@@ -293,6 +298,7 @@ form > .delete:hover {
 }
 
 /* forecast */
+.forecast,
 .forecast-container,
 .forecast-item {
   display: flex;
@@ -302,6 +308,7 @@ form > .delete:hover {
 
 .forecast {
   position: relative;
+  justify-content: center;
   width: 100%;
   height: 25%;
   padding: 0 2rem;
@@ -324,7 +331,6 @@ form > .delete:hover {
   backdrop-filter: blur(5px) saturate(180%);
   -webkit-backdrop-filter: blur(5px) saturate(180%);
   background-color: var(--bg);
-  border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
   transition: transform 0.5s ease,
               var(--bg-transition);
@@ -342,8 +348,9 @@ form > .delete:hover {
 
 .change-forecast {
   position: absolute;
-  top: -4.5rem;
+  top: 0;
   left: 1.5rem;
+  translate: 0 -100%;
   width: 22%;
   height: 4rem;
   padding-inline: 3rem;
@@ -361,7 +368,7 @@ form > .delete:hover {
   position: relative;
   justify-content: space-between;
   border-radius: 5rem;
-  backdrop-filter: blur(25px) saturate(180%);
+  backdrop-filter: blur(5px) saturate(180%);
   -webkit-backdrop-filter: blur(5px) saturate(180%);
   background-color: var(--bg);
 }
@@ -448,6 +455,24 @@ form > .delete:hover {
 .change-forecast-btn.active {
   color: var(--text-light);
   transition: color 0.3s ease 0.2s;
+}
+
+.forecast-day {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22%;
+  height: 2rem;
+  padding: 0.5rem;
+  border-radius: 5rem;
+  backdrop-filter: blur(5px) saturate(180%);
+  -webkit-backdrop-filter: blur(5px) saturate(180%);
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 .change-temp-unit {
