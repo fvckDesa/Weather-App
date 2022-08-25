@@ -18,7 +18,7 @@
 					d=" M151.1,368.09 C151.1,368.09 151.1,331.03 151.1,331.03 M132.57,349.56 C132.57,349.56 169.63,349.56 169.63,349.56 M138,336.46 C138,336.46 164.2,362.66 164.2,362.66 M138,362.66 C138,362.66 164.2,336.46 164.2,336.46">
 				</path>
 				<g opacity="1" transform="matrix(1,0,0,1,151.1009979248047,349.5610046386719)">
-					<path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(18,19,49)"
+					<path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="#9ce5f4"
 						stroke-opacity="1" stroke-width="7"
 						d=" M0,18.527999877929688 C0,18.527999877929688 0,-18.527999877929688 0,-18.527999877929688 M-18.527999877929688,0 C-18.527999877929688,0 18.527999877929688,0 18.527999877929688,0 M-13.10099983215332,-13.10099983215332 C-13.10099983215332,-13.10099983215332 13.10099983215332,13.10099983215332 13.10099983215332,13.10099983215332 M-13.10099983215332,13.10099983215332 C-13.10099983215332,13.10099983215332 13.10099983215332,-13.10099983215332 13.10099983215332,-13.10099983215332">
 					</path>
@@ -28,7 +28,7 @@
 		<g transform="matrix(1,0,0,1,198,0)" opacity="1" style="display: block;">
 			<g opacity="1" transform="matrix(1,0,0,1,0,0)">
 				<path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4"
-					stroke="rgb(18,19,49)" stroke-opacity="1" stroke-width="2"
+					stroke="#9ce5f4" stroke-opacity="1" stroke-width="2"
 					d=" M151.1,368.09 C151.1,368.09 151.1,331.03 151.1,331.03 M132.57,349.56 C132.57,349.56 169.63,349.56 169.63,349.56 M138,336.46 C138,336.46 164.2,362.66 164.2,362.66 M138,362.66 C138,362.66 164.2,336.46 164.2,336.46">
 				</path>
 				<path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4"
@@ -36,7 +36,7 @@
 					d=" M151.1,368.09 C151.1,368.09 151.1,331.03 151.1,331.03 M132.57,349.56 C132.57,349.56 169.63,349.56 169.63,349.56 M138,336.46 C138,336.46 164.2,362.66 164.2,362.66 M138,362.66 C138,362.66 164.2,336.46 164.2,336.46">
 				</path>
 				<g opacity="1" transform="matrix(1,0,0,1,151.1009979248047,349.5610046386719)">
-					<path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(18,19,49)"
+					<path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="#9ce5f4"
 						stroke-opacity="1" stroke-width="7"
 						d=" M0,18.527999877929688 C0,18.527999877929688 0,-18.527999877929688 0,-18.527999877929688 M-18.527999877929688,0 C-18.527999877929688,0 18.527999877929688,0 18.527999877929688,0 M-13.10099983215332,-13.10099983215332 C-13.10099983215332,-13.10099983215332 13.10099983215332,13.10099983215332 13.10099983215332,13.10099983215332 M-13.10099983215332,13.10099983215332 C-13.10099983215332,13.10099983215332 13.10099983215332,-13.10099983215332 13.10099983215332,-13.10099983215332">
 					</path>
@@ -45,23 +45,23 @@
 		</g>
 		<g transform="matrix(1,0,0,1,0,0.0000152587890625)" opacity="1" style="display: block;">
 			<g opacity="1" transform="matrix(1,0,0,1,250,384.77398681640625)">
-				<path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(18,19,49)"
+				<path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="#9ce5f4"
 					stroke-opacity="1" stroke-width="7"
 					d=" M0,37.10100173950195 C0,37.10100173950195 0,-37.10100173950195 0,-37.10100173950195"></path>
 			</g>
 			<g opacity="1" transform="matrix(1,0,0,1,250,384.77398681640625)">
-				<path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(18,19,49)"
+				<path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="#9ce5f4"
 					stroke-opacity="1" stroke-width="7"
 					d=" M-37.10100173950195,0 C-37.10100173950195,0 37.10100173950195,0 37.10100173950195,0"></path>
 			</g>
 			<g opacity="1" transform="matrix(1,0,0,1,250,384.77398681640625)">
-				<path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(18,19,49)"
+				<path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="#9ce5f4"
 					stroke-opacity="1" stroke-width="7"
 					d=" M-26.233999252319336,-26.233999252319336 C-26.233999252319336,-26.233999252319336 26.233999252319336,26.233999252319336 26.233999252319336,26.233999252319336">
 				</path>
 			</g>
 			<g opacity="1" transform="matrix(1,0,0,1,250,384.77398681640625)">
-				<path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(18,19,49)"
+				<path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="#9ce5f4"
 					stroke-opacity="1" stroke-width="7"
 					d=" M-26.233999252319336,26.233999252319336 C-26.233999252319336,26.233999252319336 26.233999252319336,-26.233999252319336 26.233999252319336,-26.233999252319336">
 				</path>
